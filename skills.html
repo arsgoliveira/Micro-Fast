@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minhas Skills — Tema Automático</title>
+  <style>
+    :root {
+      --bg-light: linear-gradient(180deg, #ffffff, #f4f4f4);
+      --text-light: #222;
+      --shadow-light: rgba(0, 0, 0, 0.1);
+
+      --bg-dark: radial-gradient(circle at top, #0e0e0e, #111 70%);
+      --text-dark: #eee;
+      --shadow-dark: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== BASE ===== */
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    h1 {
+      position: absolute;
+      top: 40px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px var(--shadow-light);
+      transition: color 0.5s ease;
+    }
+
+    .skills-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 60px;
+    }
+
+    /* ===== ANIMAÇÕES ===== */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .skills-icons img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+      animation: pulse 3s infinite ease-in-out, fadeInUp 1s ease forwards;
+      opacity: 0.95;
+      height: 70px;
+      width: 70px;
+      cursor: pointer;
+    }
+
+    .skills-icons img:hover {
+      transform: scale(1.25);
+      opacity: 1;
+    }
+
+    /* ===== BRILHOS COLORIDOS ===== */
+    .skills-icons .html { filter: drop-shadow(0 0 6px rgba(255, 87, 34, 0.6)); }
+    .skills-icons .html:hover { filter: drop-shadow(0 0 14px rgba(255, 87, 34, 1)); }
+
+    .skills-icons .css { filter: drop-shadow(0 0 6px rgba(33, 150, 243, 0.6)); }
+    .skills-icons .css:hover { filter: drop-shadow(0 0 14px rgba(33, 150, 243, 1)); }
+
+    .skills-icons .js { filter: drop-shadow(0 0 6px rgba(255, 235, 59, 0.6)); }
+    .skills-icons .js:hover { filter: drop-shadow(0 0 14px rgba(255, 235, 59, 1)); }
+
+    .skills-icons .git { filter: drop-shadow(0 0 6px rgba(244, 67, 54, 0.6)); }
+    .skills-icons .git:hover { filter: drop-shadow(0 0 14px rgba(244, 67, 54, 1)); }
+
+    .skills-icons .github { filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6)); }
+    .skills-icons .github:hover { filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.9)); }
+
+    .skills-icons .terminal { filter: drop-shadow(0 0 6px rgba(76, 175, 80, 0.6)); }
+    .skills-icons .terminal:hover { filter: drop-shadow(0 0 14px rgba(76, 255, 100, 1)); }
+
+    .skills-icons .vscode { filter: drop-shadow(0 0 6px rgba(3, 169, 244, 0.6)); }
+    .skills-icons .vscode:hover { filter: drop-shadow(0 0 14px rgba(3, 169, 244, 1)); }
+
+    /* ===== TEMA CLARO ===== */
+    @media (prefers-color-scheme: light) {
+      body {
+        background: var(--bg-light);
+        color: var(--text-light);
+      }
+      h1 {
+        color: var(--text-light);
+        text-shadow: 0 0 10px var(--shadow-light);
+      }
+    }
+
+    /* ===== TEMA ESCURO ===== */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+      }
+      h1 {
+        color: var(--text-dark);
+        text-shadow: 0 0 10px var(--shadow-dark);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Minhas Habilidades</h1>
+
+  <div class="skills-icons">
+    <img class="html" alt="HTML" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+    <img class="css" alt="CSS" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+    <img class="js" alt="JavaScript" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg">
+    <img class="git" alt="Git" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
+    <img class="github" alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+    <img class="terminal" alt="Terminal" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg">
+    <img class="vscode" alt="VSCode" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg">
+  </div>
+</body>
+</html>
