@@ -51,7 +51,7 @@ body {
   padding: 12px 20px;
 }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-.logo { height: 60px; width: auto; border-radius: 8px; }
+.logo { height: 90px; width: auto; border-radius: 8px; }
 
 .nav { display: flex; align-items: center; }
 .nav-list {
@@ -381,4 +381,33 @@ body {
   .services-grid { grid-template-columns: 1fr; }
   .socials { justify-content: center; }
   .socials a { width: 42px; height: 42px; font-size: 1.2rem; }
+}
+
+/* Ícone do app dentro dos cards de aplicativos */
+.app-icon {
+  width: 52px;          /* antes 96px */
+  height: 52px;         /* antes 96px */
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow:
+    0 8px 16px rgba(0,0,0,0.06),
+    0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.05);
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+/* ===== AJUSTE FINAL DO TAMANHO DOS ÍCONES DE APLICATIVOS ===== */
+.app-icon {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 12px;
+  object-fit: contain;
+  margin: 0 auto 10px auto;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.08),
+    0 2px 4px rgba(0,0,0,0.04);
 }

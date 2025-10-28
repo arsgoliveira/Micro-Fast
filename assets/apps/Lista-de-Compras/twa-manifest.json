@@ -1,0 +1,17 @@
+{
+  "packageId": "online.microfast.lista",
+  "host": "microfastinformatica.online",
+  "name": "Lista de Compras",
+  "launcherName": "Lista de Compras",
+  "startUrl": "/assets/apps/Lista-de-Compras/comp.html",
+  "display": "standalone",
+  "themeColor": "#0b5f8a",
+  "navigationColor": "#0b5f8a",
+  "backgroundColor": "#ffffff",
+  "enableNotifications": false,
+  "signingKey": {
+    "path": "./signing-key.keystore",
+    "alias": "lista",
+    "password": "SENHA_AQUI"
+  }
+}
