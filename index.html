@@ -8,6 +8,21 @@
       name="description"
       content="Micro Fast Informática — 25 anos em manutenção de computadores. Agora também criação de sites responsivos. Contato: WhatsApp."
     />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://microfastinformatica.online/" />
+    <meta property="og:title" content="Micro Fast Informática — 25 anos de experiência" />
+    <meta property="og:description" content="Manutenção de computadores, criação de sites responsivos e suporte técnico em Santos/SP. 25 anos de experiência." />
+    <meta property="og:image" content="https://microfastinformatica.online/assets/images/hero.jpg" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://microfastinformatica.online/" />
+    <meta name="twitter:title" content="Micro Fast Informática — 25 anos de experiência" />
+    <meta name="twitter:description" content="Manutenção de computadores, criação de sites responsivos e suporte técnico em Santos/SP." />
+    <meta name="twitter:image" content="https://microfastinformatica.online/assets/images/hero.jpg" />
+    <!-- Preload recursos críticos -->
+    <link rel="preload" href="assets/css/style.css" as="style" />
+    <link rel="preload" href="assets/images/hero.jpg" as="image" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="icon" href="assets/favicon.ico" />
     <link
@@ -32,9 +47,11 @@
             id="navToggle"
             aria-expanded="false"
             aria-controls="navList"
+            aria-label="Toggle menu"
           >
             ☰
           </button>
+          <div class="nav-overlay" id="navOverlay"></div>
           <ul class="nav-list" id="navList">
   <li><a href="#home" class="nav-link">Home</a></li>
   <li><a href="#services" class="nav-link">Serviços</a></li>
@@ -417,6 +434,31 @@
       <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Micro Fast Informática",
+      "description": "Manutenção de computadores, criação de sites responsivos e suporte técnico",
+      "url": "https://microfastinformatica.online",
+      "telephone": "+5513991368083",
+      "email": "contato@microfastinformatica.online",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santos",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/antonio-rodrigo-gomes-de-oliveira-55240134a/",
+        "https://github.com/arsgoliveira",
+        "https://www.instagram.com/microfastinformatica/"
+      ],
+      "priceRange": "$$",
+      "image": "https://microfastinformatica.online/assets/images/hero.jpg"
+    }
+    </script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

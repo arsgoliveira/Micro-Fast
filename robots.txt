@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://microfastinformatica.online/sitemap.xml
+
+# Bloquear páginas em construção
+Disallow: /construction.html
+Disallow: /microfast2025/
