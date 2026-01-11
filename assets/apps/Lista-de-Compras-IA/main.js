@@ -607,23 +607,23 @@ function fileToBase64(file) {
 }
 
 async function processarFotoComIA(base64Image) {
-  // ATENÇÃO: Esta é uma implementação de exemplo
-  // Para produção, você precisa:
-  // 1. Criar um backend/proxy para fazer a chamada à API
-  // 2. Configurar sua API key no backend (nunca no frontend!)
-  // 3. Fazer a requisição do frontend para seu backend
+  // ===== CONFIGURAÇÃO DA API =====
+  // Configure aqui a URL do seu backend que fará a chamada à API de IA
+  // IMPORTANTE: NÃO coloque a API key aqui no frontend!
+  // Crie um backend (Node.js, Python, etc.) que recebe a foto e chama a API
   
-  alert("⚠️ Funcionalidade de reconhecimento por IA requer configuração!\n\n" +
-        "Você precisa:\n" +
-        "1. Criar uma API key (OpenAI, Google Vision, etc.)\n" +
-        "2. Criar um backend para fazer as chamadas (por segurança)\n" +
-        "3. Configurar a URL do seu backend aqui\n\n" +
-        "Por enquanto, use o escaneamento de código de barras ou preencha manualmente.");
+  const API_BACKEND_URL = 'https://seu-backend.com/api/reconhecer-produto'; // ← CONFIGURE AQUI SUA URL
   
-  // Exemplo de como seria a implementação (descomente e configure quando tiver backend):
-  /*
+  // Mostrar loading
+  if (scanStatusEl) scanStatusEl.textContent = "Analisando foto com IA...";
+  
+  mostrarPreviewImagem(base64Image);
+  
   try {
-    const response = await fetch('https://seu-backend.com/api/reconhecer-produto', {
+    // ===== OPÇÃO 1: Usar Backend (RECOMENDADO) =====
+    // Descomente e configure quando tiver seu backend pronto:
+    /*
+    const response = await fetch(API_BACKEND_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -634,41 +634,78 @@ async function processarFotoComIA(base64Image) {
     });
 
     if (!response.ok) {
-      throw new Error('Erro na API');
+      throw new Error('Erro na API do backend');
     }
 
     const dados = await response.json();
+    preencherCamposComDadosIA(dados);
+    return; // Sair após processar
+    */
     
-    // Preencher campos automaticamente
-    if (dados.nome && prodNomeInput) {
-      prodNomeInput.value = dados.nome;
-    }
+    // ===== OPÇÃO 2: Simulação para desenvolvimento/teste =====
+    // Descomente para testar sem API real (simula resposta após 2 segundos):
+    /*
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    const dadosSimulados = {
+      nome: "Produto Reconhecido (exemplo)",
+      codigo: "7891234567890",
+      categoria: "Mercado"
+    };
+    preencherCamposComDadosIA(dadosSimulados);
+    return; // Sair após simular
+    */
     
-    if (dados.codigo && prodCodigoInput) {
-      prodCodigoInput.value = dados.codigo;
-    }
+    // Por enquanto, apenas mostra preview (configure uma das opções acima)
+    if (scanStatusEl) scanStatusEl.textContent = "Foto carregada. Configure a API para reconhecimento automático.";
     
-    if (dados.categoria && prodCategoriaSelect) {
-      // Tentar encontrar categoria correspondente
-      const catMatch = categories.find(c => 
-        c.toLowerCase().includes(dados.categoria.toLowerCase()) ||
-        dados.categoria.toLowerCase().includes(c.toLowerCase())
-      );
-      if (catMatch) {
-        prodCategoriaSelect.value = catMatch;
-      }
-    }
-    
-    alert("Produto reconhecido! Revise os campos e clique em 'Cadastrar'.");
+    alert("ℹ️ Para usar reconhecimento por IA:\n\n" +
+          "1. Crie um backend (exemplo em README-IA.md)\n" +
+          "2. Configure API_BACKEND_URL no código (linha ~610)\n" +
+          "3. Descomente a OPÇÃO 1 no código\n" +
+          "4. Ou use OPÇÃO 2 para testes com simulação\n\n" +
+          "Por enquanto, a foto foi carregada. Preencha os campos manualmente.");
     
   } catch (error) {
-    console.error("Erro ao reconhecer produto:", error);
-    alert("Erro ao reconhecer o produto. Tente novamente ou preencha manualmente.");
+    console.error("Erro ao processar foto:", error);
+    if (scanStatusEl) scanStatusEl.textContent = "Erro ao processar foto. Tente novamente.";
+    alert("Erro ao processar a foto: " + error.message);
   }
-  */
+}
+
+function preencherCamposComDadosIA(dados) {
+  // Função auxiliar para preencher campos com dados da IA
+  // Você pode melhorar esta função para processar mais dados
+  let preenchido = false;
   
-  // Alternativa temporária: mostrar preview da imagem
-  mostrarPreviewImagem(base64Image);
+  if (dados.nome && prodNomeInput) {
+    prodNomeInput.value = dados.nome;
+    preenchido = true;
+  }
+  
+  if (dados.codigo && prodCodigoInput) {
+    prodCodigoInput.value = dados.codigo;
+    preenchido = true;
+  }
+  
+  if (dados.categoria && prodCategoriaSelect) {
+    // Tentar encontrar categoria correspondente
+    const catMatch = categories.find(c => 
+      c.toLowerCase().includes(dados.categoria.toLowerCase()) ||
+      dados.categoria.toLowerCase().includes(c.toLowerCase())
+    );
+    if (catMatch) {
+      prodCategoriaSelect.value = catMatch;
+    } else if (categories.includes(dados.categoria)) {
+      prodCategoriaSelect.value = dados.categoria;
+    }
+  }
+  
+  if (preenchido) {
+    if (scanStatusEl) scanStatusEl.textContent = "✓ Produto reconhecido! Revise os campos.";
+    alert("✓ Produto reconhecido com sucesso!\n\nRevise os campos preenchidos e clique em 'Cadastrar'.");
+  } else {
+    if (scanStatusEl) scanStatusEl.textContent = "Dados recebidos, mas campos não preenchidos.";
+  }
 }
 
 function mostrarPreviewImagem(base64Image) {

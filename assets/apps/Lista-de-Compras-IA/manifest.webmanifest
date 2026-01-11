@@ -1,0 +1,22 @@
+{
+  "name": "Lista de Compras com IA",
+  "short_name": "Compras IA",
+  "description": "Lista de compras offline com leitor de código de barras, QR e reconhecimento por IA. Desenvolvido por Micro Fast Informática.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0b5f8a",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
